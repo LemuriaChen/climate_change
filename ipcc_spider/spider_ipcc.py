@@ -34,6 +34,7 @@ class MySpider:
         try:
             if not os.path.exists(MySpider.pdfPath):
                 os.mkdir(MySpider.pdfPath)
+                print(MySpider.pdfPath)
             # pdfs = os.listdir(MySpider.pdfPath)
             # for pdf in pdfs:
             #     s = os.path.join(MySpider.pdfPath, pdf)
@@ -131,7 +132,13 @@ for x in range(1, 6):
         print('爬到第{}/15个'.format(count))
         count += 1
         pdfPath = '{}{}'.format(x, y)
-        os.mkdir(pdfPath)
+        path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'papers')
+        if not os.path.exists(path):
+            os.mkdir(path)
+        pdfPath = os.path.join(path, pdfPath)
+        if not os.path.exists(pdfPath):
+            os.mkdir(pdfPath)
+        # os.mkdir(pdfPath)
         os.chdir(pdfPath)
         url = 'https://www.ipcc.ch/report/ar{}/wg{}/'.format(x, y)
         spider = MySpider()
