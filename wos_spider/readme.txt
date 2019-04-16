@@ -1,7 +1,15 @@
 ﻿#说明：
+0.使用说明：
+第一步：web of science上搜索想要的名词如："climate change"
+第二步：点击下一页，复制链接，将链接中page=2修改为page=1
+第三步：将wosspider.py中start_url那里替换成第二步的链接
+第四步：找到第三步链接中的qid后面的数字，将wosspider.py中两个Rule(LinkExtractor())中qid后面数字修改成第三步链接中的qid后面的数字
+
 1.网页解析：
 web of science 网页分布规则有点奇怪，一般网页会在?query="climate"上变化，但是从下面测试用概览页URL看只有"qid=1"这里变化了，很可能是用户搜索一次产生一个qid，
 类似cookie。测试时我清除过cookie，但依然能打开到原网页，于是乎忽视这点能爬就行了
+**********注意：关机会受到影响会找不到原网页*************
+经过不断测试，qid=1就是关机后当天的第一次搜索请求
 
 2.爬虫环境
 scrapy--crawlspider
@@ -53,3 +61,12 @@ http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mod
 https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&page=3&doc=22
 https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&excludeEventConfig=ExcludeIfFromFullRecPage&page=3&doc=24&cacheurlFromRightClick=no
 https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&page=1&doc=3
+
+=======================================
+第二天关机测试结果：
+
+#测试用概览页URL
+https://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=6CzSu6KLF7PERftEXhM&&update_back2search_link_param=yes&page=2
+
+#测试用详情页URL
+https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=1&SID=6CzSu6KLF7PERftEXhM&page=2&doc=12
