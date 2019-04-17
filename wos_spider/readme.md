@@ -132,21 +132,21 @@ author = ''.join([s for s in data if "By" in s]).strip().replace("\n", "")
 ## 4. 测试用url
 
 #测试用概览页URL（四次 分别搜索的是climate、energy、climate change、environment）
-http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=2
-http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=1
-http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=3&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=2
-http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=4&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=2
+1.http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=2
+2.http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=1
+3.http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=3&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=2
+4.http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=4&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=2
 
 #测试用详情页URL
-https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&page=3&doc=22
-https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&excludeEventConfig=ExcludeIfFromFullRecPage&page=3&doc=24&cacheurlFromRightClick=no
-https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&page=1&doc=3
+1.https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&page=3&doc=22
+2.https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&excludeEventConfig=ExcludeIfFromFullRecPage&page=3&doc=24&cacheurlFromRightClick=no
+3.https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&page=1&doc=3
 
 =======================================
 第二天关机测试结果：
 
 #测试用概览页URL
-https://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=6CzSu6KLF7PERftEXhM&&update_back2search_link_param=yes&page=2
+1.https://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=6CzSu6KLF7PERftEXhM&&update_back2search_link_param=yes&page=2
 
 #测试用详情页URL
-https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=1&SID=6CzSu6KLF7PERftEXhM&page=2&doc=12
+1.https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=1&SID=6CzSu6KLF7PERftEXhM&page=2&doc=12
