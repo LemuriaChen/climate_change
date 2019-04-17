@@ -25,8 +25,8 @@
 
    ```python
    rules = (
-                   						       Rule(LinkExtractor(allow=r'.+summary.do\?.+&qid=3.+&page=\d'),follow=True),
-                   						Rule(LinkExtractor(allow=r'.+full_record.do\?.+&qid=3.+&page=\d&doc=\d'), callback="parse_item", follow=True)
+           Rule(LinkExtractor(allow=r'.+summary.do\?.+&qid=3.+&page=\d'),follow=True),
+           Rule(LinkExtractor(allow=r'.+full_record.do\?.+&qid=3.+&page=\d&doc=\d'), callback="parse_item", follow=True)
        )
    ```
 
@@ -148,7 +148,8 @@ author = ''.join([s for s in data if "By" in s]).strip().replace("\n", "")
 2. https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&excludeEventConfig=ExcludeIfFromFullRecPage&page=3&doc=24&cacheurlFromRightClick=no
 3. https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&page=1&doc=3
 
-=======================================
+===================
+
 第二天关机测试结果：
 
 #测试用概览页URL
