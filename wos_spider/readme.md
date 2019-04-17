@@ -129,7 +129,7 @@ author = ''.join([s for s in data if "By" in s]).strip().replace("\n", "")
 
 ## 4. 测试用url
 
-#测试用概览页URL（四次 分别搜索的是climate、energy、climate change、environment）
+测试用概览页URL（四次 分别搜索的是climate、energy、climate change、environment）
 
 1. http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=2
 2. http://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=5EpTgjfkjTrGh8RQwsR&&update_back2search_link_param=yes&page=1
@@ -142,7 +142,7 @@ author = ''.join([s for s in data if "By" in s]).strip().replace("\n", "")
 
 
 
-#测试用详情页URL
+测试用详情页URL
 
 1. https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&page=3&doc=22
 2. https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=3&SID=5EpTgjfkjTrGh8RQwsR&excludeEventConfig=ExcludeIfFromFullRecPage&page=3&doc=24&cacheurlFromRightClick=no
@@ -152,10 +152,10 @@ author = ''.join([s for s in data if "By" in s]).strip().replace("\n", "")
 
 第二天关机测试结果：
 
-#测试用概览页URL
+测试用概览页URL
 
 1. https://apps.webofknowledge.com/summary.do?product=UA&parentProduct=UA&search_mode=GeneralSearch&parentQid=&qid=1&SID=6CzSu6KLF7PERftEXhM&&update_back2search_link_param=yes&page=2
 
-#测试用详情页URL
+测试用详情页URL
 
 1. https://apps.webofknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=1&SID=6CzSu6KLF7PERftEXhM&page=2&doc=12
