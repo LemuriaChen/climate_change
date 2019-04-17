@@ -1,6 +1,7 @@
 <div align="left">
-    <img src='.\images\IMG_1869.JPG' style="zoom:10%">
+    <img src='https://github.com/HUANGZHIHAO1994/climate_change/blob/master/wos_spider/images/IMG_1869.jpg?raw=true' style="zoom:10%">
  </div>
+
 
 
 ## 0.使用说明：（使用步骤）
@@ -10,7 +11,9 @@
 
 
 
-![使用说明1](.\images\1.gif)
+![使用说明1](https://github.com/HUANGZHIHAO1994/climate_change/blob/master/wos_spider/images/1.gif?raw=true)
+
+
 
 3. 将wosspider.py中start_url那里替换成第二步的链接`
 
@@ -48,7 +51,7 @@
 
 
 
-## ![title](.\images\2.gif)
+## ![title](https://github.com/HUANGZHIHAO1994/climate_change/blob/master/wos_spider/images/3.gif?raw=true)
 
 2.  文章其余信息
 
@@ -70,7 +73,7 @@ author = ''.join([s for s in data if "By" in s]).strip().replace("\n", "")
         url = response.url
 ```
 
-![else](.\images\3.gif)
+![else](https://github.com/HUANGZHIHAO1994/climate_change/blob/master/wos_spider/images/3.gif?raw=true)
 
 ## 2.爬虫环境
 - scrapy--crawlspider
