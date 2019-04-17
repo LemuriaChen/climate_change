@@ -27,8 +27,8 @@
 
    ```python
    rules = (
-                   						       Rule(LinkExtractor(allow=r'.+summary.do\?.+&qid=3.+&page=\d'),follow=True),
-                   						Rule(LinkExtractor(allow=r'.+full_record.do\?.+&qid=3.+&page=\d&doc=\d'), callback="parse_item", follow=True)
+            Rule(LinkExtractor(allow=r'.+summary.do\?.+&qid=3.+&page=\d'),follow=True),
+            Rule(LinkExtractor(allow=r'.+full_record.do\?.+&qid=3.+&page=\d&doc=\d'), callback="parse_item", follow=True)
        )
    ```
 
