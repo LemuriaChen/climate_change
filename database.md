@@ -14,7 +14,7 @@ CREATE DATABASE literature CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE TABLE article (
 	article_id BIGINT NOT NULL PRIMARY KEY COMMENT '文章id，文章唯一标识符，主键',
 	layer INT ( 11 ) COMMENT '抓取层级，种子文献列表为第0层',
-	article_name VARCHAR ( 255 ) COMMENT '文章标题',
+	article_name text COMMENT '文章标题',
 	article_type VARCHAR ( 255 ) COMMENT '文章类型，可为期刊、会议或其他类型',
 	keywords VARCHAR ( 255 ) COMMENT '文章关键词',
 	KeyWords_plus VARCHAR ( 255 ) COMMENT '文章领域分类',
@@ -27,6 +27,7 @@ CREATE TABLE article (
 	doi VARCHAR ( 255 ) COMMENT '数字对象唯一标识符',
 	ids_number VARCHAR ( 255 ) COMMENT 'SCI检索号，与wos类似',
 	cited INT ( 11 ) COMMENT '在Web of Science核心合集被引用次数',
+	url VARCHAR ( 255 ) COMMENT '文章信息url链接',
 	created_time datetime NOT NULL COMMENT '记录创建时间',
 FULLTEXT ( article_name, abstract )
 ) ENGINE = INNODB DEFAULT CHARSET = utf8mb4;
@@ -43,6 +44,7 @@ CREATE TABLE author (
 	researcher_id BIGINT COMMENT '研究者id',
 	orc_id VARCHAR ( 255 ) COMMENT '学术出版物及学术产出的作者(即科研工作者)标识符',
 	email VARCHAR ( 255 ) COMMENT '作者邮箱' 
+FULLTEXT ( author_name )	
 ) ENGINE = INNODB DEFAULT CHARSET = utf8mb4;
 ```
 
@@ -99,8 +101,9 @@ CREATE TABLE funding (
 
 ```
 CREATE TABLE citation ( 
-	cite_id BIGINT NOT NULL COMMENT '文章id，文章唯一标识符',
-	cited_id BIGINT NOT NULL COMMENT '文章id，文章唯一标识符'
+	citation_id BIGINT NOT NULL PRIMARY KEY COMMENT '引用关系 id，表格主键',
+	cite_id BIGINT COMMENT '文章id，文章唯一标识符',
+	cited_id BIGINT COMMENT '文章id，文章唯一标识符'
 ) ENGINE = INNODB DEFAULT CHARSET = utf8mb4;
 ```
 
@@ -108,8 +111,9 @@ CREATE TABLE citation (
 
 ```
 CREATE TABLE cite ( 
-	cite_id BIGINT NOT NULL COMMENT '文章id，文章唯一标识符', 
-	cited_id BIGINT NOT NULL COMMENT '文章id，文章唯一标识符'
+	citation_id BIGINT NOT NULL PRIMARY KEY COMMENT '引用关系 id，表格主键',
+	cite_id BIGINT COMMENT '文章id，文章唯一标识符', 
+	cited_id BIGINT COMMENT '文章id，文章唯一标识符'
 ) ENGINE = INNODB DEFAULT CHARSET = utf8mb4 PARTITION BY HASH ( cite_id ) PARTITIONS 20;
 ```
 
@@ -117,13 +121,20 @@ CREATE TABLE cite (
 
 ```
 CREATE TABLE cited ( 
-	cited_id BIGINT NOT NULL COMMENT '文章id，文章唯一标识符',
-	cite_id BIGINT NOT NULL COMMENT '文章id，文章唯一标识符'
+	citation_id BIGINT NOT NULL PRIMARY KEY COMMENT '引用关系 id，表格主键',
+	cited_id BIGINT COMMENT '文章id，文章唯一标识符',
+	cite_id BIGINT COMMENT '文章id，文章唯一标识符'
 ) ENGINE = INNODB DEFAULT CHARSET = utf8mb4 PARTITION BY HASH ( cited_id ) PARTITIONS 20;
 ```
 
 
 #### 前端检索需求设计
+
+* 使用literature库
+
+```
+USE literature;
+```
 
 * 文章标题模糊检索，''为所检索的字符串
 
@@ -154,22 +165,4 @@ SELECT * FROM citation WHERE cited_id = ''
 ```
 SELECT * FROM author WHERE author_id = ''
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
