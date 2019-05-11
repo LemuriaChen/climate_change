@@ -28,8 +28,8 @@ CREATE TABLE article (
 	ids_number VARCHAR ( 255 ) COMMENT 'SCI检索号，与wos类似',
 	cited INT ( 11 ) COMMENT '在Web of Science核心合集被引用次数',
 	volume VARCHAR ( 255 ) COMMENT '文章发表期刊卷号',
-    issue VARCHAR ( 255 ) COMMENT '文章发表期刊期号',
-    pages VARCHAR ( 255 ) COMMENT '文章发表期刊页码',
+	issue VARCHAR ( 255 ) COMMENT '文章发表期刊期号',
+	pages VARCHAR ( 255 ) COMMENT '文章发表期刊页码',
 	url VARCHAR ( 255 ) COMMENT '文章信息url链接',
 	created_time datetime NOT NULL COMMENT '记录创建时间',
 FULLTEXT ( article_name, abstract )
