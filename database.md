@@ -1,4 +1,4 @@
-### 对接
+### 需求
 
 #### 文献引用库 表与字段设计
 
@@ -121,6 +121,40 @@ CREATE TABLE cited (
 	cite_id BIGINT NOT NULL COMMENT '文章id，文章唯一标识符'
 ) ENGINE = INNODB DEFAULT CHARSET = utf8mb4 PARTITION BY HASH ( cited_id ) PARTITIONS 20;
 ```
+
+
+#### 前端检索需求设计
+
+* 文章标题模糊检索，''为所检索的字符串
+
+```
+SELECT * FROM article WHERE MATCH (article_name) AGAINST ('');
+```
+
+* 文章摘要模糊检索，''为所检索的字符串
+
+```
+SELECT * FROM article WHERE MATCH (abstract) AGAINST ('');
+```
+
+* 给定文章编号，查找该文章引用的所有文章
+
+```
+SELECT * FROM citation WHERE cite_id = ''
+```
+
+* 给定文章编号，查找引用该文章的所有文章
+
+```
+SELECT * FROM citation WHERE cited_id = ''
+```
+
+* 给定作者编号，查找该作者发表的所有文章
+
+```
+SELECT * FROM author WHERE author_id = ''
+```
+
 
 
 
