@@ -23,10 +23,13 @@ CREATE TABLE article (
 	research_area VARCHAR ( 255 ) COMMENT '研究领域',
 	journal_id BIGINT COMMENT '文章所在期刊的id',
 	wos VARCHAR ( 255 ) COMMENT 'Web of Science检索号',
-	wos_categories VARCHAR ( 255 ) COMMENT 'SCI检索号分类',
+	wos_categories VARCHAR ( 255 ) COMMENT 'Web of Science分类',
 	doi VARCHAR ( 255 ) COMMENT '数字对象唯一标识符',
 	ids_number VARCHAR ( 255 ) COMMENT 'SCI检索号，与wos类似',
 	cited INT ( 11 ) COMMENT '在Web of Science核心合集被引用次数',
+	volume VARCHAR ( 255 ) COMMENT '文章发表期刊卷号',
+    issue VARCHAR ( 255 ) COMMENT '文章发表期刊期号',
+    pages VARCHAR ( 255 ) COMMENT '文章发表期刊页码',
 	url VARCHAR ( 255 ) COMMENT '文章信息url链接',
 	created_time datetime NOT NULL COMMENT '记录创建时间',
 FULLTEXT ( article_name, abstract )
@@ -41,7 +44,7 @@ CREATE TABLE author (
 	author_name VARCHAR ( 255 ) COMMENT '作者名',
 	article_id BIGINT NOT NULL COMMENT '文章id，文章唯一标识符',
 	address VARCHAR ( 255 ) COMMENT '作者所在机构、国家等信息',
-	researcher_id BIGINT COMMENT '研究者id',
+	author_rank BIGINT COMMENT '文章的作者排名',
 	orc_id VARCHAR ( 255 ) COMMENT '学术出版物及学术产出的作者(即科研工作者)标识符',
 	email VARCHAR ( 255 ) COMMENT '作者邮箱' 
 FULLTEXT ( author_name )	
