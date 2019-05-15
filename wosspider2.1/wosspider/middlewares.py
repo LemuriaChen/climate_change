@@ -7,7 +7,13 @@
 
 from scrapy import signals
 import random
-
+from selenium import webdriver
+import time
+from scrapy.http.response.html import HtmlResponse
+import requests
+import json
+from wosspider.models import ProxyModel
+from twisted.internet.defer import DeferredLock
 
 class WosspiderSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -121,3 +127,76 @@ class UserAgentDownloadMiddleware(object):
     def process_request(self,request,spider):
         user_agent = random.choice(self.USER_AGENTS)
         request.headers['User-Agent'] = user_agent
+
+
+
+class SeleniumDownloadMiddleware(object):
+    def __init__(self):
+        self.driver = webdriver.Chrome()
+
+    def process_request(self,request,spider):
+        self.driver.get(request.url)
+        time.sleep(0.1)
+        try:
+            researcherid = self.driver.find_element_by_xpath("//a[@class='snowplow-hide-ResearcherID-and-ORCID']")
+            researcherid.click()
+            time.sleep(0.3)
+        except:
+            pass
+        try:
+            impact = self.driver.find_element_by_xpath("//a[@class='focusable-link snowplow-JCRoverlay']")
+            impact.click()
+            time.sleep(3)
+        except:
+            pass
+        source = self.driver.page_source
+        response = HtmlResponse(url=self.driver.current_url, body=source, request=request, encoding='utf-8')
+        return response
+
+# WOS爬到1个多小时会封IP，这里用稳定的芝麻代理
+# class IPProxyDownloadMiddleware(object):
+#
+#     PROXY_URL = 'http://webapi.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=11&time=1&ts=0&ys=0&cs=0&lb=1&sb=0&pb=45&mr=1&regions='
+#
+#     def __init__(self):
+#         super(IPProxyDownloadMiddleware, self).__init__()
+#         self.current_proxy = None
+#         self.lock = DeferredLock()
+#
+#     def process_request(self, request, spider):
+#         if 'proxy' not in request.meta:
+#             # 请求代理
+#             self.update_proxy()
+#
+#         request.meta['proxy'] = self.current_proxy.proxy
+#
+#     def process_response(self, request, response, spider):
+#         if response.status != 200 or "twisted.python.failure.Failure twisted.internet.error.ConnectionLost" in response.url:
+#             if not self.current_proxy.blacked:
+#                 self.current_proxy.blacked = True
+#             print('%s这个代理被加入黑名单了'%self.current_proxy.ip)
+#             self.update_proxy()
+#             # 如果来到这里，说明这个请求已经被识别为爬虫了
+#             # 所有这个请求就相当于什么都没有获取到
+#             # 如果不返回request，那么这个request就相当于没有获取到数据
+#             # 也就是说，这个请求就被废掉了，这个数据就没有被抓取到
+#             # 所有要重新返回request，让这个请求重新加入到调度中，
+#             # 下次再发送
+#             return request
+#         # 如果是正常的，那么要记得返回response
+#         # 如果不返回，那么这个resposne就不会被传到爬虫那里去
+#         # 也就得不到解析
+#         return response
+#
+#     def update_proxy(self):
+#         self.lock.acquire()
+#         if not self.current_proxy or self.current_proxy.blacked:
+#             response = requests.get(self.PROXY_URL)
+#             text = response.text
+#             print('重新获取了一个代理：', text)
+#             result = json.loads(text)
+#             if len(result['data']) > 0:
+#                 data = result['data'][0]
+#                 proxy_model = ProxyModel(data)
+#                 self.current_proxy = proxy_model
+#         self.lock.release()
